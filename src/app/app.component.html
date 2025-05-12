@@ -3,7 +3,17 @@
 </header>
 
 <div class="main">
+  <label for="WeatherStations">Weather Stations:</label>
+  <select name="WeatherStations" id="WeatherStations" (change)="onSelectingStation()" [(ngModel)]="selectedWeatherStation">
+    <option value="">-- Select a station --</option>
+    <option *ngFor="let station of stations" [value]="station.properties.stationIdentifier">
+      {{ station.properties.name }}
+    </option>
+  </select>
 
+  <div *ngIf="SelectedStationCurrentTemperature">
+    <p>{{ SelectedStationCurrentTemperature }}</p>
+  </div>
 </div>
 
 <footer class="footer">
